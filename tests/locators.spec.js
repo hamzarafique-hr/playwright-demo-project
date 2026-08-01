@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 
-test.skip('Go to the Practice Test Automation Website', async ({ page }) => {
+test('Go to the Practice Test Automation Website', async ({ page }) => {
 
     await page.goto('https://practicetestautomation.com');
 
@@ -8,7 +8,7 @@ test.skip('Go to the Practice Test Automation Website', async ({ page }) => {
 
 });
 
-test.skip('Go to the Practice Test Automation Website and Login', async ({ page }) => {
+test('Go to the Practice Test Automation Website and Login', async ({ page }) => {
 
     await page.goto('https://practicetestautomation.com/practice-test-login/');
     await page.getByLabel('Username').fill('student');
