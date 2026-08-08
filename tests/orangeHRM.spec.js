@@ -1,0 +1,30 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+  await page.getByRole('heading', { name: 'Login' }).click();
+  await page.getByRole('textbox', { name: 'Username' }).click();
+  await page.getByRole('textbox', { name: 'Username' }).fill('Admin');
+  await page.getByRole('textbox', { name: 'Password' }).click();
+  await page.getByRole('textbox', { name: 'Password' }).fill('admin123');
+  await page.getByText('LoginUsername : AdminPassword').click();
+  await page.getByText('Forgot your password?').click();
+  await page.getByRole('button', { name: 'Cancel' }).click();
+  await page.getByRole('textbox', { name: 'Username' }).click();
+  await page.getByRole('textbox', { name: 'Username' }).fill('Admin');
+  await page.getByText('LoginUsername : AdminPassword').click();
+  await page.getByRole('textbox', { name: 'Password' }).click();
+  await page.getByRole('textbox', { name: 'Password' }).fill('admin123');
+  await page.locator('div').nth(4).click();
+  await page.getByRole('button', { name: 'Login' }).click();
+  await page.getByRole('navigation', { name: 'Sidepanel' }).getByRole('button').click();
+  await page.getByRole('navigation', { name: 'Sidepanel' }).getByRole('button').click();
+  await page.getByRole('link', { name: 'Admin' }).click();
+  await page.getByRole('heading', { name: '/ User Management' }).click();
+  const page1Promise = page.waitForEvent('popup');
+  await page.getByText('© 2005 - 2026 OrangeHRM, Inc').click();
+  const page1 = await page1Promise;
+  await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index');
+  await page.getByRole('listitem').filter({ hasText: 'manda user' }).locator('i').click();
+  await page.getByRole('menuitem', { name: 'Logout' }).click();
+});
