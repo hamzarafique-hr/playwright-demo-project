@@ -14,5 +14,5 @@ test('Handle Prompt Dialog @smoke', async ({ page }) => {
 
   // Trigger the prompt
   await page.getByRole('button', { name: 'Show Prompt' }).click();
-  await page.pause(3000); // Wait for the prompt to be handled
+  // await page.pause(3000); // Wait for the prompt to be handled
 });
